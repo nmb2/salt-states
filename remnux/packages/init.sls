@@ -23,6 +23,7 @@ include:
   - remnux.packages.gdb
   - remnux.packages.geany
   - remnux.packages.git
+  - remnux.packages.binwalk  
   - remnux.packages.snapd
   - remnux.packages.snap
   - remnux.packages.libgraphviz-dev
@@ -192,6 +193,7 @@ remnux-packages:
       - sls: remnux.packages.mercurial
       - sls: remnux.packages.nginx
       - sls: remnux.packages.ngrep
+      - sls: remnux.packages.binwalk      
       - sls: remnux.packages.openssh-client
       - sls: remnux.packages.openssh-server
       - sls: remnux.packages.openssl
