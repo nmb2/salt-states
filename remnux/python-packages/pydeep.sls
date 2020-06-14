@@ -1,7 +1,9 @@
 include:
-  - remnux.python-packages.pip
+  - remnux.packages.python-pip
+  - remnux.packages.libfuzzy-dev
 
 pydeep:
   pip.installed:
     - require:
-      - pip: pip
+      - sls: remnux.packages.python-pip
+      - sls: remnux.packages.libfuzzy-dev

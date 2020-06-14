@@ -1,6 +1,4 @@
 include:
-  - remnux.packages.absent.cups-client
-  - remnux.packages.absent.xscreensaver
   - remnux.packages.aeskeyfind
   - remnux.packages.apt-transport-https
   - remnux.packages.autoconf
@@ -33,18 +31,17 @@ include:
   - remnux.packages.inspircd
   - remnux.packages.ipython
   - remnux.packages.lame
-  - remnux.packages.libboost-all-dev
+  - remnux.packages.libboost-dev
   - remnux.packages.libboost-python-dev
-  - remnux.packages.libboost-thread-dev
+  - remnux.packages.libboost-system-dev
   - remnux.packages.libemail-outlook-message-perl
-  - remnux.packages.libemu-dev
+  - remnux.packages.libemu
   - remnux.packages.libffi-dev
   - remnux.packages.libfuzzy-dev
   - remnux.packages.libjpeg-dev
   - remnux.packages.libjpeg8-dev
-  - remnux.packages.libmozjs-52-0
+  - remnux.packages.spidermonkey
   - remnux.packages.libncurses
-  # - remnux.packages.libolecf-utils
   - remnux.packages.libsqlite3-dev
   - remnux.packages.libssl-dev
   - remnux.packages.libtool
@@ -52,7 +49,6 @@ include:
   - remnux.packages.libxslt1-dev
   - remnux.packages.linux-headers
   - remnux.packages.ltrace
-  - remnux.packages.lxde
   - remnux.packages.mercurial
   - remnux.packages.nginx
   - remnux.packages.ngrep
@@ -69,6 +65,7 @@ include:
   - remnux.packages.python-cryptography
   - remnux.packages.python-dev
   - remnux.packages.python-dnspython
+  - remnux.packages.python-enchant
   - remnux.packages.python-future
   - remnux.packages.python-gtksourceview2
   - remnux.packages.python-hachoir-core
@@ -78,11 +75,9 @@ include:
   - remnux.packages.python-hachoir-subfile
   - remnux.packages.python-hachoir-urwid
   - remnux.packages.python-hachoir-wx
-  - remnux.packages.python-lxml
   - remnux.packages.python-magic
   - remnux.packages.python-networkx
   - remnux.packages.python-numpy
-  - remnux.packages.python-oletools
   - remnux.packages.python-pil
   - remnux.packages.python-pip
   - remnux.packages.python-pyasn1
@@ -95,7 +90,6 @@ include:
   - remnux.packages.python-setuptools
   - remnux.packages.software-properties-common
   - remnux.packages.python-virtualenv
-  - remnux.packages.volatility
   - remnux.packages.python-yara
   - remnux.packages.python
   - remnux.packages.python3-pip
@@ -119,25 +113,41 @@ include:
   - remnux.packages.tcpxtract
   - remnux.packages.tor
   - remnux.packages.unhide
-  - remnux.packages.unicode
   - remnux.packages.unrar
   - remnux.packages.upx-ucl
   - remnux.packages.usbmount
   - remnux.packages.vbindiff
   - remnux.packages.wget
   - remnux.packages.wireshark
+  - remnux.packages.tshark
   - remnux.packages.wxhexeditor
   - remnux.packages.xmlstarlet
   - remnux.packages.xpdf
-  - remnux.packages.xterm
   - remnux.packages.yara
   - remnux.packages.zlib1g-dev
+  - remnux.packages.sudo
+  - remnux.packages.i386-architecture
+  - remnux.packages.pev
+  - remnux.packages.pdftk-java
+  - remnux.packages.net-tools
+  - remnux.packages.firefox
+  - remnux.packages.wine
+  - remnux.packages.galculator
+  - remnux.packages.libjavassist-java
+  - remnux.packages.vim
+  - remnux.packages.edb-debugger
+  - remnux.packages.xorstrings
+  - remnux.packages.nodejs
+  - remnux.packages.npm
+  - remnux.packages.python3-tk
+  - remnux.packages.nautilus
+  - remnux.packages.postgresql
+  - remnux.packages.libolecf
+  - remnux.packages.procdot
 
 remnux-packages:
   test.nop:
     - require:
-      - sls: remnux.packages.absent.cups-client
-      - sls: remnux.packages.absent.xscreensaver
       - sls: remnux.packages.aeskeyfind
       - sls: remnux.packages.apt-transport-https
       - sls: remnux.packages.autoconf
@@ -170,17 +180,16 @@ remnux-packages:
       - sls: remnux.packages.inspircd
       - sls: remnux.packages.ipython
       - sls: remnux.packages.lame
-      - sls: remnux.packages.libboost-all-dev
+      - sls: remnux.packages.libboost-dev
       - sls: remnux.packages.libboost-python-dev
-      - sls: remnux.packages.libboost-thread-dev
+      - sls: remnux.packages.libboost-system-dev
       - sls: remnux.packages.libemail-outlook-message-perl
-      - sls: remnux.packages.libemu-dev
+      - sls: remnux.packages.libemu
       - sls: remnux.packages.libffi-dev
       - sls: remnux.packages.libfuzzy-dev
       - sls: remnux.packages.libjpeg-dev
       - sls: remnux.packages.libjpeg8-dev
       - sls: remnux.packages.libncurses
-      # - sls: remnux.packages.libolecf-utils
       - sls: remnux.packages.libsqlite3-dev
       - sls: remnux.packages.libssl-dev
       - sls: remnux.packages.libtool
@@ -188,7 +197,6 @@ remnux-packages:
       - sls: remnux.packages.libxslt1-dev
       - sls: remnux.packages.linux-headers
       - sls: remnux.packages.ltrace
-      - sls: remnux.packages.lxde
       - sls: remnux.packages.mercurial
       - sls: remnux.packages.nginx
       - sls: remnux.packages.ngrep
@@ -205,6 +213,7 @@ remnux-packages:
       - sls: remnux.packages.python-cryptography
       - sls: remnux.packages.python-dev
       - sls: remnux.packages.python-dnspython
+      - sls: remnux.packages.python-enchant
       - sls: remnux.packages.python-future
       - sls: remnux.packages.python-gtksourceview2
       - sls: remnux.packages.python-hachoir-core
@@ -214,11 +223,9 @@ remnux-packages:
       - sls: remnux.packages.python-hachoir-subfile
       - sls: remnux.packages.python-hachoir-urwid
       - sls: remnux.packages.python-hachoir-wx
-      - sls: remnux.packages.python-lxml
       - sls: remnux.packages.python-magic
       - sls: remnux.packages.python-networkx
       - sls: remnux.packages.python-numpy
-      - sls: remnux.packages.python-oletools
       - sls: remnux.packages.python-pil
       - sls: remnux.packages.python-pip
       - sls: remnux.packages.python-pyasn1
@@ -231,7 +238,6 @@ remnux-packages:
       - sls: remnux.packages.python-setuptools
       - sls: remnux.packages.software-properties-common
       - sls: remnux.packages.python-virtualenv
-      - sls: remnux.packages.volatility
       - sls: remnux.packages.python-yara
       - sls: remnux.packages.python
       - sls: remnux.packages.python3-pip
@@ -255,16 +261,35 @@ remnux-packages:
       - sls: remnux.packages.tcpxtract
       - sls: remnux.packages.tor
       - sls: remnux.packages.unhide
-      - sls: remnux.packages.unicode
       - sls: remnux.packages.unrar
       - sls: remnux.packages.upx-ucl
       - sls: remnux.packages.usbmount
       - sls: remnux.packages.vbindiff
       - sls: remnux.packages.wget
       - sls: remnux.packages.wireshark
+      - sls: remnux.packages.tshark
       - sls: remnux.packages.wxhexeditor
       - sls: remnux.packages.xmlstarlet
       - sls: remnux.packages.xpdf
-      - sls: remnux.packages.xterm
       - sls: remnux.packages.yara
       - sls: remnux.packages.zlib1g-dev
+      - sls: remnux.packages.sudo
+      - sls: remnux.packages.i386-architecture
+      - sls: remnux.packages.pev
+      - sls: remnux.packages.pdftk-java
+      - sls: remnux.packages.net-tools
+      - sls: remnux.packages.firefox
+      - sls: remnux.packages.wine
+      - sls: remnux.packages.spidermonkey
+      - sls: remnux.packages.galculator
+      - sls: remnux.packages.libjavassist-java
+      - sls: remnux.packages.vim
+      - sls: remnux.packages.edb-debugger
+      - sls: remnux.packages.xorstrings
+      - sls: remnux.packages.nodejs
+      - sls: remnux.packages.npm
+      - sls: remnux.packages.python3-tk
+      - sls: remnux.packages.nautilus
+      - sls: remnux.packages.postgresql
+      - sls: remnux.packages.libolecf
+      - sls: remnux.packages.procdot

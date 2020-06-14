@@ -35,6 +35,17 @@ include:
   - remnux.python-packages.xxxswf
   - remnux.python-packages.peepdf
   - remnux.python-packages.pype32
+  - remnux.python-packages.thug
+  - remnux.python-packages.unxor
+  - remnux.python-packages.xlmmacrodeobfuscator
+  - remnux.python-packages.officeparser
+  - remnux.python-packages.flare-floss
+  - remnux.python-packages.vipermonkey
+  - remnux.python-packages.unicode
+  - remnux.python-packages.volatility
+  - remnux.python-packages.ioc-writer
+  - remnux.python-packages.volatility3
+  - remnux.python-packages.fakemail
 
 remnux-python-packages:
   test.nop:
@@ -75,3 +86,14 @@ remnux-python-packages:
       - sls: remnux.python-packages.xxxswf
       - sls: remnux.python-packages.peepdf
       - sls: remnux.python-packages.pype32
+      - sls: remnux.python-packages.thug
+      - sls: remnux.python-packages.unxor
+      - sls: remnux.python-packages.xlmmacrodeobfuscator
+      - sls: remnux.python-packages.officeparser
+      - sls: remnux.python-packages.flare-floss
+      - sls: remnux.python-packages.vipermonkey
+      - sls: remnux.python-packages.unicode
+      - sls: remnux.python-packages.volatility
+      - sls: remnux.python-packages.ioc-writer
+      - sls: remnux.python-packages.volatility3
+      - sls: remnux.python-packages.fakemail

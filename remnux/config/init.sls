@@ -1,17 +1,29 @@
 include:
-  - remnux.config.docs
+  - remnux.config.user
   - remnux.config.inetsim
   - remnux.config.wget
   - remnux.config.curl
-  - remnux.config.user
-  - remnux.config.spidermonkey
+  - remnux.config.objects
+  - remnux.config.bash-rc
+  - remnux.config.bash-history
+  - remnux.config.thug
+  - remnux.config.networkminer
+  - remnux.config.salt-minion
+  - remnux.config.dot-local
+  - remnux.config.ghidra
 
 remnux-config:
   test.nop:
     - require:
-      - sls: remnux.config.docs
+      - sls: remnux.config.user
       - sls: remnux.config.inetsim
       - sls: remnux.config.wget
       - sls: remnux.config.curl
-      - sls: remnux.config.user
-      - sls: remnux.config.spidermonkey
+      - sls: remnux.config.objects
+      - sls: remnux.config.bash-rc
+      - sls: remnux.config.bash-history
+      - sls: remnux.config.thug
+      - sls: remnux.config.networkminer
+      - sls: remnux.config.salt-minion
+      - sls: remnux.config.dot-local
+      - sls: remnux.config.ghidra
