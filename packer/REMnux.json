@@ -1,0 +1,164 @@
+{
+  "_comment6": "Build with `packer build remnux.json`",
+  "builders": [
+    {
+      "boot_command": [
+        "<esc><wait>",
+        "<esc><wait>",
+        "<enter><wait>",
+        "/install/vmlinuz<wait>",
+        " auto<wait>",
+        " console-setup/ask_detect=false<wait>",
+        " console-setup/layoutcode=us<wait>",
+        " console-setup/modelcode=pc105<wait>",
+        " debconf/frontend=noninteractive<wait>",
+        " debian-installer=en_US<wait>",
+        " fb=false<wait>",
+        " initrd=/install/initrd.gz<wait>",
+        " kbd-chooser/method=us<wait>",
+        " keyboard-configuration/layout=USA<wait>",
+        " keyboard-configuration/variant=USA<wait>",
+        " locale=en_US<wait>",
+        " netcfg/get_domain=vm<wait>",
+        " netcfg/get_hostname=remnux<wait>",
+        " grub-installer/bootdev=/dev/sda<wait>",
+        " noapic<wait>",
+        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg<wait>",
+        " -- <wait>",
+        "<enter><wait>"
+      ],
+      "boot_wait": "10s",
+      "disk_size": "{{user `disk_size`}}",
+      "export_opts": [
+        "--manifest",
+        "--vsys",
+        "0",
+        "--description",
+        "{{user `vm_description`}}",
+        "--version",
+        "{{user `version`}}"
+      ],
+      "format": "ova",
+      "output_filename":"REMnux_{{isotime}}",
+      "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+      "guest_os_type": "Ubuntu_64",
+      "headless": true,
+      "http_directory": "http",
+      "iso_checksum": "sha256:e2ecdace33c939527cbc9e8d23576381c493b071107207d2040af72595f8990b",
+      "iso_urls": [
+        "iso/ubuntu-18.04.4-server-amd64.iso",
+        "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-amd64.iso"
+      ],
+      "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
+      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_port": 22,
+      "ssh_timeout": "1800s",
+      "ssh_username": "{{ user `ssh_username` }}",
+      "type": "virtualbox-iso",
+      "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "{{ user `memory` }}"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--cpus",
+          "{{ user `cpus` }}"
+        ],
+        [
+          "modifyvm", "{{.Name}}", "--vram", "64"
+        ]
+      ],
+      "virtualbox_version_file": ".vbox_version",
+      "vm_name": "remnux-desktop2"
+    }
+  ],
+  "post-processors": [
+    [
+     {
+         "type": "compress",
+         "output": "build/REMnux_Desktop_{{isotime}}.zip"
+     }
+    ]
+  ],
+  "provisioners": [
+    {
+      "environment_vars": [
+        "CLEANUP_PAUSE={{user `cleanup_pause`}}",
+        "SSH_USERNAME={{user `ssh_username`}}",
+        "SSH_PASSWORD={{user `ssh_password`}}",
+        "http_proxy={{user `http_proxy`}}",
+        "https_proxy={{user `https_proxy`}}",
+        "ftp_proxy={{user `ftp_proxy`}}",
+        "rsync_proxy={{user `rsync_proxy`}}",
+        "no_proxy={{user `no_proxy`}}",
+        "remnux_VERSION={{user `remnux_version`}}"
+      ],
+      "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+      "expect_disconnect": true,
+      "scripts": [
+        "scripts/update.sh",
+        "scripts/motd.sh",
+        "scripts/vagrant.sh",
+        "scripts/setup.sh",
+        "scripts/sshd.sh",
+        "scripts/vmware.sh",
+        "scripts/virtualbox.sh",
+        "scripts/saltstack.sh"
+      ],
+      "type": "shell"
+    },
+    {
+      "custom_state": "remnux.dedicated",
+      "local_state_tree": "../../salt-states",
+      "no_exit_on_failure": true,
+      "salt_call_args": "--state-output=terse",
+      "skip_bootstrap": true,
+      "type": "salt-masterless"
+    },
+    {
+      "environment_vars": [
+        "CLEANUP_PAUSE={{user `cleanup_pause`}}",
+        "SSH_USERNAME={{user `ssh_username`}}",
+        "SSH_PASSWORD={{user `ssh_password`}}",
+        "http_proxy={{user `http_proxy`}}",
+        "https_proxy={{user `https_proxy`}}",
+        "ftp_proxy={{user `ftp_proxy`}}",
+        "rsync_proxy={{user `rsync_proxy`}}",
+        "no_proxy={{user `no_proxy`}}",
+        "remnux_VERSION={{user `remnux_version`}}"
+      ],
+      "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+      "scripts": [
+        "scripts/update2.sh",
+        "scripts/cleanup.sh",
+        "scripts/minimize.sh"
+      ],
+      "type": "shell"
+    }
+  ],
+  "variables": {
+    "cleanup_pause": "",
+    "cpus": "2",
+    "disk_size": "81920",
+    "ftp_proxy": "{{env `ftp_proxy`}}",
+    "headless": "true",
+    "hostname": "remnuxdesktop",
+    "http_proxy": "{{env `http_proxy`}}",
+    "https_proxy": "{{env `https_proxy`}}",
+    "locale": "en_US",
+    "memory": "4096",
+    "no_proxy": "{{env `no_proxy`}}",
+    "remnux_version": "stable",
+    "rsync_proxy": "{{env `rsync_proxy`}}",
+    "ssh_password": "remnux",
+    "ssh_username": "remnux",
+    "version": "0.1.0",
+    "virtualbox_guest_os_type": "Ubuntu_64",
+    "vm_description": "REMnux",
+    "vmware_guest_os_type": "ubuntu-64"
+  }
+}
