@@ -3,6 +3,8 @@
 
 packer/packer_cache/
 
+packer/build/*
+
 packer/output-virtualbox-iso/
 
 *.vdi
