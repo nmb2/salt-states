@@ -8,8 +8,22 @@ function title() {
 }
 
 # Show the IP address of the primary network interface
+function myip4 {
+  ip addr | grep -A 1 " en" | grep "inet" | cut -f 6 -d " " | cut -f 1 -d "/"
+}
+function myip6 {
+  ip -6 addr | grep inet6 | awk -F '[ \t]+|/' '{print $3}' | grep -v "^::1"
+}
 function myip {
-  hostname -I | awk '{print $1}'
+  ipv4=`myip4`
+  ipv6=`myip6`
+  if [ ${#ipv4} -gt 0 ]; then
+  	echo $ipv4
+  else
+  	if [ ${#ipv6} -gt 0 ]; then
+  		echo $ipv6
+  	fi
+  fi
 }
 
 # Renew DCHP release using a single command

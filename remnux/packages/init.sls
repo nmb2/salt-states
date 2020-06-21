@@ -59,7 +59,6 @@ include:
   - remnux.packages.pdfresurrect
   - remnux.packages.pkg-config
   - remnux.packages.pyew
-  - remnux.packages.python-balbuzard
   - remnux.packages.python-capstone
   - remnux.packages.python-crypto
   - remnux.packages.python-cryptography
@@ -85,7 +84,7 @@ include:
   - remnux.packages.python-pyelftools
   - remnux.packages.python-pyperclip
   - remnux.packages.python-pyqt5
-  - remnux.packages.python-qt4
+  - remnux.packages.python-pyqt5-qtwebkit
   - remnux.packages.python-scipy
   - remnux.packages.python-setuptools
   - remnux.packages.software-properties-common
@@ -103,7 +102,6 @@ include:
   - remnux.packages.scite
   - remnux.packages.ssdeep
   - remnux.packages.strace
-  - remnux.packages.stunnel4
   - remnux.packages.subversion
   - remnux.packages.swftools
   - remnux.packages.sysdig
@@ -144,6 +142,9 @@ include:
   - remnux.packages.postgresql
   - remnux.packages.libolecf
   - remnux.packages.procdot
+  - remnux.packages.dex2jar
+  - remnux.packages.netcat
+  - remnux.packages.python3-pyqt5
 
 remnux-packages:
   test.nop:
@@ -207,7 +208,6 @@ remnux-packages:
       - sls: remnux.packages.pdfresurrect
       - sls: remnux.packages.pkg-config
       - sls: remnux.packages.pyew
-      - sls: remnux.packages.python-balbuzard
       - sls: remnux.packages.python-capstone
       - sls: remnux.packages.python-crypto
       - sls: remnux.packages.python-cryptography
@@ -233,7 +233,7 @@ remnux-packages:
       - sls: remnux.packages.python-pyelftools
       - sls: remnux.packages.python-pyperclip
       - sls: remnux.packages.python-pyqt5
-      - sls: remnux.packages.python-qt4
+      - sls: remnux.packages.python-pyqt5-qtwebkit
       - sls: remnux.packages.python-scipy
       - sls: remnux.packages.python-setuptools
       - sls: remnux.packages.software-properties-common
@@ -251,7 +251,6 @@ remnux-packages:
       - sls: remnux.packages.scite
       - sls: remnux.packages.ssdeep
       - sls: remnux.packages.strace
-      - sls: remnux.packages.stunnel4
       - sls: remnux.packages.subversion
       - sls: remnux.packages.swftools
       - sls: remnux.packages.sysdig
@@ -293,3 +292,6 @@ remnux-packages:
       - sls: remnux.packages.postgresql
       - sls: remnux.packages.libolecf
       - sls: remnux.packages.procdot
+      - sls: remnux.packages.dex2jar
+      - sls: remnux.packages.netcat
+      - sls: remnux.packages.python3-pyqt5
