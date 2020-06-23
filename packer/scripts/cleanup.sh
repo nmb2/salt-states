@@ -52,10 +52,6 @@ apt-get -y purge popularity-contest installation-report command-not-found friend
 # 19.10+ don't have this package so fail gracefully
 apt-get -y purge command-not-found-data || true;
 
-
-#add back headers for current kernel
-sudo apt-get install -y build-essential linux-headers-`uname -r` dkms
-
 # Exlude the files we don't need w/o uninstalling linux-firmware
 echo "==> Setup dpkg excludes for linux-firmware"
 cat <<_EOF_ | cat >> /etc/dpkg/dpkg.cfg.d/excludes

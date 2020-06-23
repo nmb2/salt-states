@@ -49,6 +49,10 @@ dpkg --list | awk '{ print $2 }' | grep linux-source | xargs apt-get -y purge
 # done
 # apt-get -y purge deborphan dialog
 
+#add back headers for current kernel
+sudo apt-get install -y build-essential linux-headers-`uname -r` dkms
+
+
 # echo "==> Removing man pages"
 # rm -rf /usr/share/man/*
 echo "==> Removing APT files"
